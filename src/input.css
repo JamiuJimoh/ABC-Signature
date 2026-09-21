@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-white font-sans text-base leading-relaxed text-ink antialiased; }
+  :focus-visible { outline: 2px solid #8A2545; outline-offset: 3px; }
+  .on-dark :focus-visible { outline-color: #fff; }
+  /* Scroll-nav buttons: strip all default <button> chrome so they look exactly like the
+     links they replace. Utility classes applied on each element (padding, borders, color,
+     etc.) still win, since Tailwind's utilities layer is cascaded after this base layer. */
+  button[data-section] { appearance: none; background: none; border: 0; margin: 0; padding: 0; font: inherit; color: inherit; text-align: inherit; cursor: pointer; }
+}
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+  .section { @apply scroll-mt-16 py-16 sm:py-24; }
+  .h2 { @apply font-serif text-4xl font-medium tracking-tight sm:text-5xl; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.2em]; }
+
+  .btn { @apply inline-flex h-12 items-center justify-center border border-berry bg-berry px-7 text-sm font-medium text-white transition-colors duration-200 hover:border-wine hover:bg-wine motion-reduce:transition-none; }
+  .btn-outline { @apply bg-transparent text-berry hover:bg-berry hover:text-white; }
+  .btn-gold { @apply border-gold bg-gold text-ink hover:border-white hover:bg-white hover:text-berry; }
+  .btn-ghost-light { @apply border-white/70 bg-transparent text-white hover:border-white hover:bg-white hover:text-berry; }
+
+  .input { @apply h-12 w-full border border-line bg-white px-4 text-base text-ink transition-colors focus:border-berry focus:outline-none; }
+  .label { @apply mb-1.5 block text-sm font-medium; }
+
+  .slot { @apply relative overflow-hidden bg-rose text-ink; aspect-ratio: var(--ar, 4/5); }
+  .slot img { @apply absolute inset-0 h-full w-full object-cover; }
+  .slot-empty { @apply absolute inset-0 grid place-items-center px-4 text-center text-xs opacity-80; }
+  /* Placeholder tones, visible only until real photos are added */
+  .tone-a { background: #EBC9C0; color: #1F1416; }
+  .tone-b { background: #F6DDD7; color: #1F1416; }
+  .tone-c { background: #8A2545; color: #fff; }
+  .tone-d { background: #C9A24B; color: #1F1416; }
+  .tone-e { background: #4A1526; color: #fff; }
+  .tone-f { background: #F3C9AE; color: #1F1416; }
+}
